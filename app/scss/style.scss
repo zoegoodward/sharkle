@@ -1,0 +1,77 @@
+// ----
+// Sass Dart (v1.4.0)
+// style.scss
+// ----
+
+// Variables
+$hey-size: 200px;
+$sharkle-size: 350px;
+$hey-shift: -46px;
+
+// Mixins
+@mixin animate ($name, $size) {
+    animation-name: $name;
+    animation-iteration-count: infinite;
+    background-repeat: no-repeat;
+    background-size: 200px;
+    animation-duration: 0.6s;
+    -webkit-app-region: drag;
+    height: $size;
+    width: $size;
+}
+
+@mixin position ($x, $y) {
+    background-position-x: $x;
+    background-position-y: $y;
+}
+
+@mixin sharkle-animation($colour, $state, $frames) {
+    // Create an animation
+    @keyframes #{$colour}_#{$state} {      
+        // Loop over the frames
+        @for $i from 0 to $frames {
+            // Compute keyframes
+            $current-frame: percentage(((100 / ($frames - 1)) * $i) / 100);
+            // Output styles for each frame
+            #{$current-frame} {
+                background-image: url("../images/#{$colour}/#{$state}_#{$i}.png");
+            }
+        }
+    }
+}
+
+@mixin bubble-animation($colour, $state, $frames) {    
+    // Create an animation
+    @keyframes #{$colour}_#{$state} {
+        // Loop over the frames
+        @each $i, $percent in (0, 0%), (0, 50%), (1, 50.01%), (1, 100%) {
+                #{$percent} {
+                    background-image: url("../images/#{$colour}/#{$state}_#{$i}.png");
+                    @if $i == 1 {
+                        background-position-y: $hey-shift;
+                    }
+                }
+        }
+    }
+}
+
+#sharkle {
+    background-color: crimson;
+    @include animate(white_idle, $sharkle-size);
+    @include position(110px, 73px);    
+}
+
+#hey {
+    @include animate(white_bubble, $hey-size);    
+    @include position(-20px, -50px);
+    visibility: hidden;
+    animation-timing-function: linear;
+}
+
+// Generate animation
+@include sharkle-animation('white', idle, 7);
+@include sharkle-animation('black', idle, 7);
+@include sharkle-animation('white', wave, 3);
+@include sharkle-animation('black', wave, 3);
+@include bubble-animation('white', bubble, 2);
+@include bubble-animation('black', bubble, 2);

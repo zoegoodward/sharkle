@@ -1,0 +1,98 @@
+#sharkle {
+  background-color: crimson;
+  animation-name: white_idle;
+  animation-iteration-count: infinite;
+  background-repeat: no-repeat;
+  background-size: 200px;
+  animation-duration: 0.6s;
+  -webkit-app-region: drag;
+  height: 350px;
+  width: 350px;
+  background-position-x: 110px;
+  background-position-y: 73px; }
+
+#hey {
+  animation-name: white_bubble;
+  animation-iteration-count: infinite;
+  background-repeat: no-repeat;
+  background-size: 200px;
+  animation-duration: 0.6s;
+  -webkit-app-region: drag;
+  height: 200px;
+  width: 200px;
+  background-position-x: -20px;
+  background-position-y: -50px;
+  visibility: hidden;
+  animation-timing-function: linear; }
+
+@keyframes white_idle {
+  0% {
+    background-image: url("../images/white/idle_0.png"); }
+  16.66667% {
+    background-image: url("../images/white/idle_1.png"); }
+  33.33333% {
+    background-image: url("../images/white/idle_2.png"); }
+  50% {
+    background-image: url("../images/white/idle_3.png"); }
+  66.66667% {
+    background-image: url("../images/white/idle_4.png"); }
+  83.33333% {
+    background-image: url("../images/white/idle_5.png"); }
+  100% {
+    background-image: url("../images/white/idle_6.png"); } }
+
+@keyframes black_idle {
+  0% {
+    background-image: url("../images/black/idle_0.png"); }
+  16.66667% {
+    background-image: url("../images/black/idle_1.png"); }
+  33.33333% {
+    background-image: url("../images/black/idle_2.png"); }
+  50% {
+    background-image: url("../images/black/idle_3.png"); }
+  66.66667% {
+    background-image: url("../images/black/idle_4.png"); }
+  83.33333% {
+    background-image: url("../images/black/idle_5.png"); }
+  100% {
+    background-image: url("../images/black/idle_6.png"); } }
+
+@keyframes white_wave {
+  0% {
+    background-image: url("../images/white/wave_0.png"); }
+  50% {
+    background-image: url("../images/white/wave_1.png"); }
+  100% {
+    background-image: url("../images/white/wave_2.png"); } }
+
+@keyframes black_wave {
+  0% {
+    background-image: url("../images/black/wave_0.png"); }
+  50% {
+    background-image: url("../images/black/wave_1.png"); }
+  100% {
+    background-image: url("../images/black/wave_2.png"); } }
+
+@keyframes white_bubble {
+  0% {
+    background-image: url("../images/white/bubble_0.png"); }
+  50% {
+    background-image: url("../images/white/bubble_0.png"); }
+  50.01% {
+    background-image: url("../images/white/bubble_1.png");
+    background-position-y: -46px; }
+  100% {
+    background-image: url("../images/white/bubble_1.png");
+    background-position-y: -46px; } }
+
+@keyframes black_bubble {
+  0% {
+    background-image: url("../images/black/bubble_0.png"); }
+  50% {
+    background-image: url("../images/black/bubble_0.png"); }
+  50.01% {
+    background-image: url("../images/black/bubble_1.png");
+    background-position-y: -46px; }
+  100% {
+    background-image: url("../images/black/bubble_1.png");
+    background-position-y: -46px; } }

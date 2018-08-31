@@ -1,0 +1,37 @@
+{
+  "name": "sharkle",
+  "version": "1.0.0",
+  "description": "Sharkle Desktop App",
+  "main": "app/main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crazy-calypso/sharkle.git"
+  },
+  "author": "Zoe Goodward",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/crazy-calypso/sharkle/issues"
+  },
+  "homepage": "https://github.com/crazy-calypso/sharkle#readme",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "appId": "sharkle-electron.app",
+    "mac": {
+      "category": "public.app-category.developer-tools"
+    }
+  },
+  "devDependencies": {
+    "ajv": "^6.5.3",
+    "electron": "^2.0.8",
+    "electron-builder": "^20.28.3",
+    "eslint": "^5.4.0",
+    "eslint-plugin-react": "^7.11.1",
+    "gulp": "^4.0.0",
+    "gulp-sass": "^4.0.1"
+  }
+}

@@ -1,88 +1,108 @@
 'use strict';
 
+// Import electron
 const electron = require('electron');
-const app = electron.app;
-const Tray = electron.Tray;
-const Menu = electron.Menu;
-const BrowserWindow = electron.BrowserWindow;
+const {app, BrowserWindow, Menu, Tray} = require('electron');
 const path = require('path');
 const url = require('url');
 
-let mainWindow;
+// Declare window and tray objects
+let window = null;
+let tray = null;
 
+// Get platform
+let platform = process.platform;
+
+// Don't show the app in the doc on Mac OS
+if (platform === 'darwin') {
+  app.dock.hide();
+}
+
+// Determine appropriate icon for platform
+let trayImage;
+let imageFolder = __dirname + '/images/icons/';
+
+if (platform === 'darwin') {
+  trayImage = imageFolder + 'osx/icon.png';
+} else if (platform === 'win32') {
+  trayImage = imageFolder + 'win/icon.ico';
+}
+
+// Create main window
 const createWindow = () => {
-  // create the browser window
-  mainWindow = new BrowserWindow({width: 300, height: 275, skipTaskbar: true, frame: false, transparent: true, hasShadow: false, resizable: false});
+  // Create the browser window
+  window = new BrowserWindow({width: 300, height: 290, frame: false, resizable: false, hasShadow: false, transparent: true, fullscreenable: false, maximizable: false, skipTaskbar: true});
 
   // load the index.html of the app
-  mainWindow.loadURL(url.format({
+  window.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: true
   }));
 
-  // open the DevTools.
-  //mainWindow.webContents.openDevTools();
-
-  mainWindow.on('closed', () => {
-    mainWindow = null;
+  // Emitted when the window is closed.
+  window.on('closed', () => {
+    // Dereference the window object
+    window = null;
   });
 };
 
-const setupTray = () => {
-  let contents = mainWindow.webContents;
-  // setup tray
-  tray = new Tray(path.join(__dirname,'./images/icon.png'));
-  const contextMenu = Menu.buildFromTemplate([
-    {label: 'About', click() {
-      console.log('About button clicked');
-      electron.dialog.showMessageBox({
-        type: 'info', 
-        icon: './images/icon.png',
-        title: 'Sharkle',
-        message: 'Sharkle is an Electron app based on the game Night in the Woods.',
-        detail: 'Author: Celestial Crumpets',
-        buttons: ['Close']
-      });
-    }},
-    
-    {label: 'Website', click() {
-      console.log('Website clicked');
-      electron.shell.openExternal('https://github.com/crazy-calypso/sharkle');
-    }},
-    {type: 'separator'},
-    {label: 'Invert Colours', type: 'checkbox', checked: false, click() {
-      console.log('Invert Colours clicked');
-      contents.executeJavaScript('invertColour()');
-    }},
-    {label: 'Invert Direction', type: 'checkbox', checked: false, click() {
-      console.log('Invert Direction clicked');
-      contents.executeJavaScript('invertDirection()');
-    }},
-    {type: 'separator'},
-    {label: 'Exit', click() {
-      console.log('Exit button clicked');
-      app.quit();
-    }}
+// Create tray menu
+const createTray = () => {
+  tray = new Tray(path.join(trayImage));  
+  let contextMenu = Menu.buildFromTemplate([
+    {
+      label: 'About',  click() {
+        electron.dialog.showMessageBox({
+          type: 'info',
+          icon: imageFolder + 'about.png',
+          title: 'Sharkle',
+          message: 'Electron Sharkle',
+          detail: 'Sharkle is an Electron app based on the game Night in the Woods.\nAuthor: Celestial Crumpets',
+          buttons: ['Close']
+        });
+      }           
+    },
+    {
+      label: 'Website', click() {
+        electron.shell.openExternal('https://github.com/crazy-calypso/sharkle');
+      }
+    },
+    {
+      type: 'separator'
+    },
+    {
+      label: 'Invert Colour', type: 'checkbox', checked: false, click() {
+        window.webContents.executeJavaScript('invertColour()');
+      }
+    },
+    {
+      label: 'Invert Direction', type: 'checkbox', checked: false, click() {
+        window.webContents.executeJavaScript('invertDirection()');
+      }
+    },
+    {
+      type: 'separator'
+    },
+    {
+      label: 'Exit', click() {
+        app.quit();
+      }
+    }
   ]);
+  if (platform === 'darwin') {
+    tray.setPressedImage(imageFolder + 'osx/iconPressed.png');
+  }
   tray.setToolTip('Hey! It\'s Sharkle!');
-  tray.setPressedImage(path.join(__dirname,'./images/iconPressed.png'));
   tray.setContextMenu(contextMenu);
 };
 
-let tray = null;
-
 app.on('ready', () => {
+  createTray();
   createWindow();
-  // hide dock icon
-  if (process.platform === 'darwin') {
-    app.dock.hide();
-  }
-  setupTray();
-  console.log('Sharkle is ready to serve in menu bar.');
 });
 
-// quit when all windows are closed
+// Quit when all windows are closed.
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
@@ -90,7 +110,7 @@ app.on('window-all-closed', () => {
 });
 
 app.on('activate', () => {
-  if (mainWindow === null) {
+  if (window === null) {
     createWindow();
   }
 });

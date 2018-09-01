@@ -58,7 +58,7 @@ const createTray = () => {
           icon: imageFolder + 'about.png',
           title: 'Sharkle',
           message: 'Electron Sharkle',
-          detail: 'Sharkle is an Electron app based on the game Night in the Woods.\nAuthor: Celestial Crumpets',
+          detail: 'Sharkle is an Electron app based on the game Night in the Woods.\nAuthor: Zoe Goodward',
           buttons: ['Close']
         });
       }           

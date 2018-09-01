@@ -1,44 +1,44 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/crazy-calypso/sharkle"><img src="/images/sharkle_logo.png" alt="Sharkle" width="200"></a>
+  <a href="https://github.com/crazy-calypso/sharkle"><img src="app/images/black/wave_0.png" alt="Sharkle" width="200"></a>
   <br>
   Sharkle
   <br>
 </h1>
 
-<h4 align="center">A Sharkle weather desktop app built on top of <a href="http://electron.atom.io" target="_blank">Electron</a>.</h4>
+<h4 align="center">A <i>Night in the Woods</i> Sharkle app built with <a href="http://electron.atom.io" target="_blank">Electron</a>.</h4>
 
 <p align="center">
-  <a href="https://forthebadge.com/">
-    <img src="https://forthebadge.com/images/badges/winter-is-coming.svg"
-         alt="Winter is Coming">
-  </a>
-  <a href="https://forthebadge.com/"><img src="https://forthebadge.com/images/badges/made-with-javascript.svg"></a>
-  <a href="https://forthebadge.com/">
-      <img src="https://forthebadge.com/images/badges/for-sharks.svg">
-  </a>
-  <a href="https://forthebadge.com/">
-    <img src="https://forthebadge.com/images/badges/built-with-love.svg">
-  </a>
+
+  <a href="https://forthebadge.com/"><img src="https://forthebadge.com/images/badges/made-with-crayons.svg"></a>
+  <a href="https://forthebadge.com/"><img src="https://forthebadge.com/images/badges/built-with-love.svg"></a>
+  <a href="https://forthebadge.com/"><img src="https://forthebadge.com/images/badges/for-sharks.svg"></a>
+  
 </p>
 
 <p align="center">
+  <a href="#overview">Overview</a> •
   <a href="#key-features">Key Features</a> •
   <a href="#how-to-use">How To Use</a> •
-  <a href="#download">Download</a> •
-  <a href="#credits">Credits</a> •
-  <a href="#related">Related</a> •
   <a href="#license">License</a>
 </p>
 
 # Overview
-Sharkle is a desktop application based on the widget in the game *Night in the
-Woods*. When clicked, Sharkle displays a greeting message and plays one of seven
+Sharkle is a silly little desktop application based on the icon on Mae's desktop in the game *Night in the
+Woods*. When clicked Sharkle displays a greeting message and plays one of seven
 sounds.
-<br>
-Alternatively, make an app that uses Mae's image, or one of the other characters,
-and plays dialogue quotes from them instead.
-<br>
+
+---
+
+# Key Features
+
+* Plays seven different silly noises
+* Can be dragged to any place on the desktop
+* Change colour from white to black and flip direction
+* Lives in tray/menubar
+* Cross platform
+  * Compatible with macOS and Windows (not tested on Linux)
+* Brings joy! 😃
 
 ---
 
@@ -46,7 +46,8 @@ and plays dialogue quotes from them instead.
 
 To clone and run this application you'll need [Git](https://git-scm.com) and
 [Node.js](https://nodejs.org/en/download/) (which comes with
-[npm](http://npmjs.com)) installed on your computer. From terminal enter the following:
+[npm](http://npmjs.com)) installed on your computer. From your terminal or 
+command line enter the following:
 
 ```terminal
 # Clone this repository
@@ -61,3 +62,8 @@ $ npm install
 # Run the app
 $ npm start
 ```
+
+---
+
+# License
+MIT

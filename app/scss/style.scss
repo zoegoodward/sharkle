@@ -4,25 +4,23 @@
 // ----
 
 // Variables
-$hey-size: 200px;
-$sharkle-size: 350px;
-$hey-shift: -46px;
+$bubble-shift: -46px;
 
 // Mixins
-@mixin animate ($name, $size) {
+@mixin animate ($name) {   
     animation-name: $name;
-    animation-iteration-count: infinite;
-    background-repeat: no-repeat;
-    background-size: 200px;
-    animation-duration: 0.6s;
-    -webkit-app-region: drag;
-    height: $size;
-    width: $size;
+    animation-iteration-count: infinite;     
+    animation-duration: 0.6s;  
 }
 
-@mixin position ($x, $y) {
+@mixin position ($x, $y, $height, $width) {
+    position: absolute;
     background-position-x: $x;
     background-position-y: $y;
+    height: $height;
+    width: $width;
+    background-size: 200px;
+    background-repeat: no-repeat; 
 }
 
 @mixin sharkle-animation($colour, $state, $frames) {
@@ -40,32 +38,44 @@ $hey-shift: -46px;
     }
 }
 
-@mixin bubble-animation($colour, $state, $frames) {    
+@mixin bubble-animation($colour, $state, $direction, $frames) {    
     // Create an animation
-    @keyframes #{$colour}_#{$state} {
+    @keyframes #{$colour}_#{$state}_#{$direction} {
         // Loop over the frames
         @each $i, $percent in (0, 0%), (0, 50%), (1, 50.01%), (1, 100%) {
                 #{$percent} {
-                    background-image: url("../images/#{$colour}/#{$state}_#{$i}.png");
+                    @if $direction == 'right' {
+                        background-image: url("../images/#{$colour}/#{$state}_#{$i+2}.png");
+                    } @else {
+                        background-image: url("../images/#{$colour}/#{$state}_#{$i}.png");
+                    }           
                     @if $i == 1 {
-                        background-position-y: $hey-shift;
+                        background-position-y: $bubble-shift;
                     }
                 }
         }
     }
 }
 
-#sharkle {
-    background-color: crimson;
-    @include animate(white_idle, $sharkle-size);
-    @include position(110px, 73px);    
+#window {
+    position: relative;
+    height: 270px;
+    width: 290px;
+    -webkit-app-region: drag;
 }
 
-#hey {
-    @include animate(white_bubble, $hey-size);    
-    @include position(-20px, -50px);
+#sharkle {
+    @include position(-25px, -10px, 185px, 150px);
+    right: 0px;
+    bottom: 0px;   
+    -webkit-app-region: no-drag; 
+    @include animate(white_idle);    
+}
+
+#bubble {
+    @include position(-20px, -50px, 120px, 160px);
+    @include animate(white_bubble_left);       
     visibility: hidden;
-    animation-timing-function: linear;
 }
 
 // Generate animation
@@ -73,5 +83,7 @@ $hey-shift: -46px;
 @include sharkle-animation('black', idle, 7);
 @include sharkle-animation('white', wave, 3);
 @include sharkle-animation('black', wave, 3);
-@include bubble-animation('white', bubble, 2);
-@include bubble-animation('black', bubble, 2);
+@include bubble-animation('white', bubble, 'left', 2);
+@include bubble-animation('black', bubble, 'left', 2);
+@include bubble-animation('white', bubble, 'right', 2);
+@include bubble-animation('black', bubble, 'right', 2);

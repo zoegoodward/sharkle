@@ -9,11 +9,9 @@
 <h4 align="center">A <i>Night in the Woods</i> Sharkle app built with <a href="http://electron.atom.io" target="_blank">Electron</a>.</h4>
 
 <p align="center">
-
   <a href="https://forthebadge.com/"><img src="https://forthebadge.com/images/badges/made-with-crayons.svg"></a>
   <a href="https://forthebadge.com/"><img src="https://forthebadge.com/images/badges/built-with-love.svg"></a>
-  <a href="https://forthebadge.com/"><img src="https://forthebadge.com/images/badges/for-sharks.svg"></a>
-  
+  <a href="https://forthebadge.com/"><img src="https://forthebadge.com/images/badges/for-sharks.svg"></a>  
 </p>
 
 <p align="center">
@@ -28,8 +26,6 @@ Sharkle is a silly little desktop application based on the icon on Mae's desktop
 Woods*. When clicked Sharkle displays a greeting message and plays one of seven
 sounds.
 
----
-
 # Key Features
 
 * Plays seven different silly noises
@@ -39,8 +35,6 @@ sounds.
 * Cross platform
   * Compatible with macOS and Windows (not tested on Linux)
 * Brings joy! 😃
-
----
 
 # How To Use
 
@@ -62,8 +56,6 @@ $ npm install
 # Run the app
 $ npm start
 ```
-
----
 
 # License
 MIT

@@ -2,7 +2,7 @@
 
 // create objects
 let sharkle = document.getElementById('sharkle');
-let hey = document.getElementById('hey');
+let bubble = document.getElementById('bubble');
 
 // Sharkle optional variables
 let colour = 'white';
@@ -31,12 +31,24 @@ const randInt = (min, max) => {
 const invertDirection = () => {
   if (direction == 'left') {
     direction = 'right';
-    sharkle.style.webkitTransform = 'scaleX(-1)';
+    // change Sharkle direction
+    sharkle.style.right = '';
+    sharkle.style.left = '0px'; 
     sharkle.style.transform = 'scaleX(-1)';
+    // change bubble direction
+    bubble.style.right = '0px';
+    bubble.style.transform = 'scaleX(-1)'; 
+    bubble.style.animationName = colour+'_bubble_'+direction;   
   } else {
     direction = 'left';
-    sharkle.style.webkitTransform = '';
+    // change Sharkle direction
+    sharkle.style.right = '0px';
+    sharkle.style.left = '';
     sharkle.style.transform = '';
+    // change bubble direction
+    bubble.style.right = '';
+    bubble.style.transform = ''; 
+    bubble.style.animationName = colour+'_bubble_'+direction;  
   }
 };
 
@@ -45,11 +57,11 @@ const invertColour = () => {
   if (colour == 'white') {
     colour = 'black';
     sharkle.style.animationName = colour+'_idle';
-    hey.style.animationName = colour+'_bubble';
+    bubble.style.animationName = colour+'_bubble_'+direction;
   } else {
     colour = 'white';
     sharkle.style.animationName = colour+'_idle';
-    hey.style.animationName = colour+'_bubble';
+    bubble.style.animationName = colour+'_bubble_'+direction;
   }
 };
 
@@ -57,18 +69,15 @@ const invertColour = () => {
 sharkle.onclick = () => {
   //play audio
   let i = randInt(min, max);
-  audio[i].play();
-  // debugging
-  console.log(`number of audio file selected ${i}`);
-      
+  audio[i].play();     
   // waving Sharkle
   sharkle.style.animationDuration = '0.3s';
   sharkle.style.animationName = colour+'_wave';
-  hey.style.visibility = 'visible';
-
+  bubble.style.visibility = 'visible';
+  // return to idle Sharkle after sound ended
   audio[i].addEventListener('ended', () => {
     sharkle.style.animationDuration = '0.6s';
     sharkle.style.animationName = colour+'_idle';
-    hey.style.visibility = 'hidden';
+    bubble.style.visibility = 'hidden';
   });
 }; 

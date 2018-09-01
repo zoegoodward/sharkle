@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/crazy-calypso/sharkle"><img src="app/images/sharkle_logo.png" alt="Sharkle" width="200"></a>
+  <a href="https://github.com/crazy-calypso/sharkle"><img src="/images/sharkle_logo.png" alt="Sharkle" width="200"></a>
   <br>
   Sharkle
   <br>

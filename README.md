@@ -17,8 +17,7 @@
 <p align="center">
   <a href="#overview">Overview</a> •
   <a href="#key-features">Key Features</a> •
-  <a href="#how-to-use">How To Use</a> •
-  <a href="#license">License</a>
+  <a href="#how-to-use">How To Use</a>
 </p>
 
 # Overview
@@ -56,6 +55,3 @@ $ npm install
 # Run the app
 $ npm start
 ```
-
-# License
-MIT

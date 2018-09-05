@@ -4,7 +4,7 @@
 let sharkle = document.getElementById('sharkle');
 let bubble = document.getElementById('bubble');
 
-// Sharkle optional variables
+// Sharkle variables
 let colour = 'white';
 let direction = 'left';
 
@@ -33,16 +33,16 @@ const invertDirection = () => {
     direction = 'right';
     // change Sharkle direction
     sharkle.style.right = '';
-    sharkle.style.left = '0px'; 
+    sharkle.style.left = 0; 
     sharkle.style.transform = 'scaleX(-1)';
     // change bubble direction
-    bubble.style.right = '0px';
+    bubble.style.right = 0;
     bubble.style.transform = 'scaleX(-1)'; 
     bubble.style.animationName = colour+'_bubble_'+direction;   
   } else {
     direction = 'left';
     // change Sharkle direction
-    sharkle.style.right = '0px';
+    sharkle.style.right = 0;
     sharkle.style.left = '';
     sharkle.style.transform = '';
     // change bubble direction

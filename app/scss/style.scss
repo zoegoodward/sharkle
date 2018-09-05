@@ -66,24 +66,24 @@ $bubble-shift: -46px;
 
 #sharkle {
     @include position(-25px, -10px, 185px, 150px);
-    right: 0px;
-    bottom: 0px;   
-    -webkit-app-region: no-drag; 
-    @include animate(white_idle);    
+    @include animate(white_idle);
+    right: 0;
+    bottom: 0;   
+    -webkit-app-region: no-drag;       
 }
 
 #bubble {
     @include position(-20px, -50px, 120px, 160px);
-    @include animate(white_bubble_left);       
+    @include animate(white_bubble_left);      
     visibility: hidden;
 }
 
 // Generate animation
-@include sharkle-animation('white', idle, 7);
-@include sharkle-animation('black', idle, 7);
-@include sharkle-animation('white', wave, 3);
-@include sharkle-animation('black', wave, 3);
-@include bubble-animation('white', bubble, 'left', 2);
-@include bubble-animation('black', bubble, 'left', 2);
-@include bubble-animation('white', bubble, 'right', 2);
-@include bubble-animation('black', bubble, 'right', 2);
+@include sharkle-animation('white', 'idle', 7);
+@include sharkle-animation('black', 'idle', 7);
+@include sharkle-animation('white', 'wave', 3);
+@include sharkle-animation('black', 'wave', 3);
+@include bubble-animation('white', 'bubble', 'left', 2);
+@include bubble-animation('black', 'bubble', 'left', 2);
+@include bubble-animation('white', 'bubble', 'right', 2);
+@include bubble-animation('black', 'bubble', 'right', 2);

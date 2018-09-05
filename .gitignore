@@ -19,6 +19,7 @@ Thumbs.db
 # Linting #
 ###########
 .eslintrc.json
+.vscode
 
 # Task management #
 ###################
